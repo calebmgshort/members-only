@@ -1,0 +1,19 @@
+<h1>Posts:<h1>
+<dl>
+  <% @posts.each do |post| %>
+    <% if user_signed_in? %>
+      <%= post.user.email%>
+    <% end %>
+    <dd><%= post.body %></dd>
+    <br>
+  <% end %>
+</dl>
+
+<div id="user_nav">
+    <% if user_signed_in? %>
+        Signed in as <%= current_user.email %>\
+        <%= link_to 'Sign out', destroy_user_session_path, :method => :delete %>
+    <% else %>
+        <%= link_to 'Register', new_user_registration_path %> or <%= link_to 'Sign in', new_user_session_path %>
+    <% end %>
+</div>

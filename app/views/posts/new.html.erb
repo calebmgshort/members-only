@@ -1,0 +1,14 @@
+<% if @post.invalid? %>
+  <p>The following errors prevented the post from saving:</p>
+  <ul>
+    <% @post.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  <ul>
+
+<% end %>
+
+<%= form_for @post, url: {action: "create"} do |f| %>
+  <%= f.text_area :body, size: "60x12" %>
+  <%= f.submit "Create" %>
+<% end %>
